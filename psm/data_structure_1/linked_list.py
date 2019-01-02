@@ -119,3 +119,130 @@ class Linked_list:
             cur = cur.next
             cnt += 1
         return cur.data
+
+    def remove(self, target):
+        if self.empty():
+            return None
+
+        # befor는 current 노드의 이전 노드를 가리킨다
+        # 삭제할 때 요긴하게 쓰인다
+        bef = self.head
+        cur = self.head
+
+        # A. 삭제 노드가 첫 번째 노드일 때
+        if target == cur.data:
+            # A-1. 데이터가 하나일 때
+            if self.size() == 1:
+                self.head = None
+                self.tail = None
+            # A-2. 데이터가 두 개 이상일 때
+            else:
+                self.head = self.head.next
+            self.d_size -= 1
+            return cur.data
+
+        while cur.next:
+            bef = cur
+            cur = cur.next
+            # B. 삭제 노드가 첫 번째 노드가 아닐때
+            if target == cur.data:
+                # B-1. 삭제 노드가 마지막 노드일 때
+                if cur == self.tail:
+                    self.tail = bef
+                # B-2. 일반적인 경우
+                bef.next = cur.next
+                self.d_size -= 1
+                return cur.data
+
+            return None
+
+
+def show_list(self):
+    if slist.empty():
+        print('The list is empty')
+        return
+
+    for i in range(slist.size()):
+        print(slist.search_pos(i), end='')
+
+
+if __name__ == '__main__':
+    slist = Linked_list()
+    print('데이터 개수: {}'.format(slist.size()))
+    show_list(slist)
+    print()
+
+    # 데이터가 하나일 경우
+    slist.append(2)
+    print('데이터 개수:{}'.format(slist.size()))
+    show_list(slist)
+    print()
+    # 데이터가 하나일 경우
+    # 잘 삭제되는지 테스트한다
+    if slist.remove(2):
+        print('데이터 개수:{}'.format(slist.size()))
+        show_list(slist)
+        print()
+
+if __name__ == '__main__':
+    slist = Linked_list()
+    print('데이터 개수:{}'.format(slist.size()))
+    show_list(slist)
+    print()
+
+    slist.append(3)
+    slist.append(1)
+    slist.append(5)
+    slist.append(2)
+    slist.append(10)
+    slist.append(7)
+    slist.append(2)
+
+    print('데이터 개수: {}'.format(slist.size()))
+    show_list(slist)
+    print()
+
+    if slist.remove(2):
+        print('데이터 개수:{}'.format(slist.size()))
+        show_list(slist)
+        print()
+    else:
+        print('target Not found')
+
+    if slist.remove(2):
+        print('데이터 개수:{}'.format(slist.size()))
+        show_list(slist)
+        print()
+    else:
+        print('target Not found')
+
+
+if __name__ == '__main__':
+    slist = Linked_list()
+    print('데이터 개수:{}'.format(slist.size()))
+    show_list(slist)
+    print()
+
+    slist.append(3)
+    slist.append(1)
+    slist.append(5)
+    slist.append(2)
+    slist.append(10)
+    slist.append(7)
+    slist.append(2)
+
+    print('데이터 개수:{}'.format(slist.size()))
+    show_list(slist)
+    print('\n')
+
+    data1, pos1 = slist.search_target(2)
+    if data1:
+        print('searched data : {} at pos<{}>'.format(data1, pos1))
+    else:
+        print('there is no such data')
+
+    data2, pos2 = slist.search_target(2, pos1 + 1)
+    if data2:
+        print('searched data : {} at pos <{}>'.format(data2, pos2))
+    else:
+        print('there is no such data')
