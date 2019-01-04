@@ -1,3 +1,5 @@
+# 프로그램 1-1
+
 class Student:
     def __init__(self, name, id):
         self.name = name
@@ -14,6 +16,7 @@ best = Student('Lee', 101)
 print(best.get_name())
 print(best.get_id())
 
+# 프로그램 1-2
 
 a = []
 b = [None] * 10
@@ -27,6 +30,7 @@ print(len(c))
 
 
 # 프로그램 1-3
+
 import random
 import time
 random.seed(time.time())
@@ -39,6 +43,7 @@ print("--- %s seconds ---" % (time.time() - start_time))
 
 
 # 프로그램 1-4
+
 a = [1, 5, 4, 6, 8, 11, 3, 12]
 even = list(filter(lambda x: (x%2 == 0), a))
 print(even)
